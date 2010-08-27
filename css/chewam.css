@@ -3,6 +3,10 @@
     font-family:"Trebuchet MS", tahoma, arial;
 }
 
+body {
+    background-color:#EFEFEF;
+}
+
 body, h1, h2, h3 {margin:0;}
 
 h1 {
@@ -26,6 +30,7 @@ h3 a {
     padding:10px;
     margin:0 auto;
     border:0px solid black;
+    background-color:#FFFFFF;
     -webkit-box-shadow:rgba(0,0,0,0.2) 1px 0px 10px 5px;
     -moz-box-shadow:rgba(0,0,0,0.2) 1px 0px 10px 5px;
 }
