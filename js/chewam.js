@@ -1,7 +1,51 @@
 Chewam = function() {
+
+  var projectsPage = null;
+  var tutorialsPage = null;
+  var activePage = null;
+  var pageHeight = null;
   
   function init() {
       initPreviews();
+      initPaging();
+  }
+  
+  function initPaging() {
+      var pages = Ext.select(".page");
+      var links = Ext.select("#menu a");
+      var wrapper = Ext.get("page-wrapper");
+      activePage = projectsPage = pages.elements[0];
+      pageHeight = Ext.fly(activePage).getHeight();
+      wrapper.setHeight(pageHeight);
+      tutorialsPage = pages.elements[1];
+      links.on({
+          click:function(e, htmlEl, options) {
+              if (htmlEl.text === "Projects" && activePage !== projectsPage) {
+                  showPage(projectsPage);
+                  links.toggleClass("selected");
+              } else if (htmlEl.text === "Tutorials" && activePage !== tutorialsPage) {
+                  showPage(tutorialsPage);
+                  links.toggleClass("selected");
+              }
+          }
+      });
+  }
+
+  function showPage(page) {
+      var height = Ext.fly(page).getHeight();
+      if (height > pageHeight) {
+          wrapper.setHeight(height);
+          pageHeight = height;
+      }
+      Ext.fly(activePage).slideOut("l", {
+          useDisplay:true
+          ,callback:function() {
+              activePage = page;
+              Ext.fly(page).slideIn("l", {
+                  useDisplay:true
+              });
+          }
+      });
   }
   
   function initPreviews() {
