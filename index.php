@@ -41,7 +41,13 @@
 								$html .= '<div class="project">';
 								$html .= '<div class="description floated">';
 								$html .= '<h3><a href="#">'.$file.'</a></h3>';
-								$html .= '<div class="text">some text to describe the project, few words to make google happy</div>';
+								
+								$readme = $dir.'/'.$file.'/README';
+								$handle = fopen($readme, "r");
+								$readme = fread($handle, filesize($readme));
+								fclose($handle);
+								$html .= '<div class="text">'.$readme.'</div>';
+								
 								$html .= '<a class="link" target="_blank" href="'.$dir.'/'.$file.'">demo</a>';
 								$html .= '<a class="link" style="margin-left:10px" target="_blank" href="http://github.com/goldledoigt/'.$file.'">GitHub</a>';
 								$html .= '</div>';
