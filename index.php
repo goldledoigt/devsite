@@ -50,7 +50,7 @@
 								} else $readme = '';
 								$html .= '<div class="text">'.$readme.'</div>';
 								
-								$html .= '<a class="link" target="_blank" href="'.$dir.'/'.$file.'">demo</a>';
+								$html .= '<a class="link" target="_blank" href="'.$dir.'/'.$file.'/example/">demo</a>';
 								$html .= '<a class="link" style="margin-left:10px" target="_blank" href="http://github.com/goldledoigt/'.$file.'">GitHub</a>';
 								$html .= '</div>';
 
