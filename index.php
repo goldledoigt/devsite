@@ -81,7 +81,9 @@
 				<div style="clear:both"></div>
 			</div>
 
-			<div id="footer"></div>
+			<div id="footer">
+				<a href="http://chewam.com">Chewam</a>&nbsp;|&nbsp;<a href="http://revolunet.com">Revolunet</a>&nbsp;|&nbsp;<a href="http://quickprez.com">Quickprez</a>
+			</div>
 		</div>
 	</body>
 

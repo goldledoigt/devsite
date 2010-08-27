@@ -45,6 +45,21 @@ h3 a {
 
 #spotlight {margin-left:10px;}
 
+#footer {
+    margin:20px 0 10px 0;
+    text-align:center;
+}
+
+#footer a {
+    font-size:11px;
+    text-decoration:none;
+}
+
+#footer a:hover {
+    color:#F26101;
+    text-decoration:underline;
+}
+
 .floated {float:left;}
 
 .project {
