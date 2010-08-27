@@ -44,9 +44,22 @@
 								$html .= '<div>some text to describe the project, few words to make google happy</div>';
 								$html .= '</div>';
 								$html .= '<div class="preview floated">';
+								
+								if (is_dir($dir.'/'.$file.'/screenshots')) {
+									$screenshots = scandir($dir.'/'.$file.'/screenshots');
+									foreach($screenshots as $screenshot) {
+										if ($screenshot !== '.' and $screenshot !== '..') {
+											$path = $dir.'/'.$file.'/screenshots/'.$screenshot;
+											$html .= '<img style="display:none;" src="'.$path.'" />';
+										}
+									}
+								}
+								
+/*								
 								$html .= '<img style="display:none;" src="http://application-express-blog.e-dba.com/wp-content/blog/extjs-grid-integration.png" />';
 								$html .= '<img style="display:none" src="http://www.papygeek.com/wp-content/uploads/2007/10/ext-js-wordpress-theme-blog.png" />';
 								$html .= '<img style="display:none" src="http://www.davidtan.org/wp-content/uploads/2007/12/extjs_desktop_screenshot.gif" />';
+*/
 								$html .= '</div>';
 								$html .= '<div style="clear:both"></div>';
 								$html .= '</div>';
