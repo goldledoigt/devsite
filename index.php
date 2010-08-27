@@ -43,7 +43,7 @@
 								$html .= '<h3><a href="#">'.$file.'</a></h3>';
 
 								$readme = $dir.'/'.$file.'/README';
-								if (is_file($readme)) {
+								if (is_file($readme) and filesize($readme) > 0) {
 									$handle = fopen($readme, "r");
 									$readme = fread($handle, filesize($readme));
 									fclose($handle);
