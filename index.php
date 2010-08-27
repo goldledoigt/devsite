@@ -36,6 +36,8 @@
 				<a class="selected">Projects</a>
 				&nbsp;|&nbsp;
 				<a>Tutorials</a>
+				&nbsp;|&nbsp;
+				<a>Contact</a>
 			</div>
 
 			<div id="page-wrapper" class="wrapper">
@@ -95,6 +97,13 @@
 					<div class="project">pof</div>
 					<div class="project">pif</div>
 					<div class="project">paf</div>
+				</div>
+
+				<div id="contact-body" style="display:none" class="page">
+					<div>Name:<input /></div>
+					<div>eMail:<input /></div>
+					<div>Message:<textarea></textarea></div>
+					<div><button onclick="Chewam.sendMail();">send</button></div>
 				</div>
 
 			</div>

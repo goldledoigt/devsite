@@ -2,8 +2,10 @@ Chewam = function() {
 
   var projectsPage = null;
   var tutorialsPage = null;
+  var contactPage = null;
   var activePage = null;
   var pageHeight = null;
+  var activeLink = null;
   
   function init() {
       initPreviews();
@@ -18,14 +20,19 @@ Chewam = function() {
       pageHeight = Ext.fly(activePage).getHeight();
       wrapper.setHeight(pageHeight);
       tutorialsPage = pages.elements[1];
+      contactPage = pages.elements[2];
+      activeLink = links.elements[0];
       links.on({
           click:function(e, htmlEl, options) {
               if (htmlEl.text === "Projects" && activePage !== projectsPage) {
                   showPage(projectsPage);
-                  links.toggleClass("selected");
+                  setActiveLink(htmlEl);
               } else if (htmlEl.text === "Tutorials" && activePage !== tutorialsPage) {
                   showPage(tutorialsPage);
-                  links.toggleClass("selected");
+                  setActiveLink(htmlEl);
+              } else if (htmlEl.text === "Contact" && activePage !== contactPage) {
+                  showPage(contactPage);
+                  setActiveLink(htmlEl);
               }
           }
       });
@@ -47,7 +54,13 @@ Chewam = function() {
           }
       });
   }
-  
+
+  function setActiveLink(link) {
+      Ext.fly(activeLink).toggleClass("selected");
+      Ext.fly(link).toggleClass("selected");
+      activeLink = link;
+  }
+
   function initPreviews() {
       var els = Ext.select(".preview");
       Ext.each(els.elements, animPreview);
@@ -77,8 +90,21 @@ Chewam = function() {
       }
   }
   
+  function sendMail() {
+      var textarea = Ext.select("#contact-body textarea").elements[0];
+      var message = Ext.fly(textarea).getValue();
+      console.log("message", message);
+      Ext.Ajax.request({
+          url:"sendmail.php"
+          ,params:{
+              message:message
+          }
+      });
+  }
+  
   return {
       init:init
+      ,sendMail:sendMail
   }
     
 }();
