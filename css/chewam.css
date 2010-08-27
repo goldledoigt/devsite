@@ -52,6 +52,7 @@ h3 a {
     font-size:28px;
     text-align:center;
     background:-moz-linear-gradient(center top , #243250, #304269, #243250) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, 50% 0, 50% 100%, from(#243250), color-stop(0.5, #304269), to(#243250));
 }
 
 #menu a {
