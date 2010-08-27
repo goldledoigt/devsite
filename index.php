@@ -41,11 +41,13 @@
 								$html .= '<div class="project">';
 								$html .= '<div class="description floated">';
 								$html .= '<h3><a href="#">'.$file.'</a></h3>';
-								
+
 								$readme = $dir.'/'.$file.'/README';
-								$handle = fopen($readme, "r");
-								$readme = fread($handle, filesize($readme));
-								fclose($handle);
+								if (is_file($readme)) {
+									$handle = fopen($readme, "r");
+									$readme = fread($handle, filesize($readme));
+									fclose($handle);
+								} else $readme = '';
 								$html .= '<div class="text">'.$readme.'</div>';
 								
 								$html .= '<a class="link" target="_blank" href="'.$dir.'/'.$file.'">demo</a>';
