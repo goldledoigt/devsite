@@ -6,12 +6,12 @@ Chewam = function() {
   var activePage = null;
   var pageHeight = null;
   var activeLink = null;
-  
+
   function init() {
       initPreviews();
       initPaging();
   }
-  
+
   function initPaging() {
       var pages = Ext.select(".page");
       var links = Ext.select("#menu a");
@@ -65,7 +65,7 @@ Chewam = function() {
       var els = Ext.select(".preview");
       Ext.each(els.elements, animPreview);
   }
-  
+
   function animPreview(htmlEl) {
       var images = Ext.fly(htmlEl).select("img").elements;
       var imagesCount = images.length;
@@ -85,28 +85,33 @@ Chewam = function() {
                       }
                   });
               }
-          }
+          };
           Ext.TaskMgr.start(task);
       }
   }
-  
+
   function sendMail() {
       var textarea = Ext.select("#contact-body textarea").elements[0];
+      var inputs = Ext.select("#contact-body input").elements;
+      var name = Ext.fly(inputs[0]).getValue();
+      var email = Ext.fly(inputs[1]).getValue();
       var message = Ext.fly(textarea).getValue();
       console.log("message", message);
       Ext.Ajax.request({
           url:"sendmail.php"
           ,params:{
-              message:message
+	    name:name
+	    ,email:email
+            ,message:message
           }
       });
   }
-  
+
   return {
       init:init
       ,sendMail:sendMail
   }
-    
+
 }();
 
 Ext.onReady(Chewam.init);
